@@ -10,7 +10,7 @@ const LoginContainer = () => {
   const { data: session } = useSession();
   const { push } = useRouter();
   useEffect(() => {
-    if (!session) {
+    if (!!session) {
       push("/dashboard");
     }
   }, [push, session]);
