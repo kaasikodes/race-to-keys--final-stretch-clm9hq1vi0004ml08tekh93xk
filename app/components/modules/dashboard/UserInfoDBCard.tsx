@@ -23,6 +23,8 @@ const UserInfoDBCard: React.FC<{
   phone,
   isKeyInitialized,
 }) => {
+  const showFundMessage =
+    !accountBalance || (accountBalance && accountBalance <= 0);
   return (
     <div className="bg-mainBg shadow border rounded-md px-5 pt-4 pb-6">
       <h5 className="font-semibold text-accent text-lg">Welcome {userName}</h5>
@@ -46,7 +48,7 @@ const UserInfoDBCard: React.FC<{
             <li>Address: {publicKey}</li>
             <li>
               Account Balance:{accountBalance}{" "}
-              {accountBalance || (accountBalance && accountBalance <= 0) ? (
+              {showFundMessage ? (
                 <>
                   <br />
                   <span className="mt-1 text-red-600 text-xs">
