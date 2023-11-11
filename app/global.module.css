@@ -1,0 +1,7 @@
+/* styles/Home.module.css */
+.bg-image {
+  background-image: url("/public/assets/auth-bg-01.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}

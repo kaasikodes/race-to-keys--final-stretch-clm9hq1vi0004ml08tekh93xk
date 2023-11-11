@@ -85,6 +85,22 @@ export async function buyKeys(
   await client.waitForTransaction(tx, { checkSuccess: true });
 }
 
+export async function transferAptosTo(
+  fundingAccount: AptosAccount,
+  accountToFund: AptosAccount | string,
+  amount: number
+) {
+  const transfer = await coinClient.transfer(
+    fundingAccount,
+    accountToFund,
+    amount,
+    {
+      createReceiverIfMissing: true,
+    }
+  );
+  await client.waitForTransaction(transfer, { checkSuccess: true });
+}
+
 /* 
   Sells keys of a key subject.
   @param seller - The user selling the keys. This contains the private key of the account.
