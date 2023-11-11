@@ -44,7 +44,12 @@ const UserInfoDBCard: React.FC<{
         <div>
           <ul className="flex flex-col gap-2 text-xs text-accent">
             <li>Address: {publicKey}</li>
-            <li>Account Balance:{accountBalance}</li>
+            <li>
+              Account Balance:{accountBalance} <br />
+              <span className="mt-1 text-red-600 text-sm">
+                Please fund the address above to use application
+              </span>
+            </li>
 
             <li>Email: {email}</li>
             <li>Phone: {phone}</li>
