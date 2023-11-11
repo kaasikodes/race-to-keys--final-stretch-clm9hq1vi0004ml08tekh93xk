@@ -46,14 +46,15 @@ const UserInfoDBCard: React.FC<{
             <li>Address: {publicKey}</li>
             <li>
               Account Balance:{accountBalance}{" "}
-              {accountBalance && accountBalance <= 0 && (
+              {accountBalance || (accountBalance && accountBalance <= 0) ? (
                 <>
                   <br />
                   <span className="mt-1 text-red-600 text-xs">
-                    Please fund the address above to use application
+                    Please fund the address above to use application on aptos
+                    testnet
                   </span>
                 </>
-              )}
+              ) : null}
             </li>
 
             <li>Email: {email}</li>
