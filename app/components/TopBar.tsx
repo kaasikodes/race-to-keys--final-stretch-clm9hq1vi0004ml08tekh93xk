@@ -71,7 +71,7 @@ const TopBar = () => {
         )}
         {!session && (
           <div className="lg:flex items-center gap-6 hidden">
-            <Button type="text" onClick={() => signIn()}>
+            <Button type="text" onClick={() => signIn("twitter")}>
               Login
             </Button>
           </div>
