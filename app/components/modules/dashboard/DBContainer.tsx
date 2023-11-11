@@ -20,6 +20,7 @@ const DBContainer: React.FC<{ data?: TDBResponse }> = ({ data }) => {
             {...{
               userName: session?.user?.name,
               email: session?.user?.email,
+              isKeyInitialized: data?.data.userInfo.isKeyInitialized,
               //   phone: session?.user?.phone,
               //   publicKey: session?.user?.publicKey,
               publicKey: data?.data.userInfo.address,
