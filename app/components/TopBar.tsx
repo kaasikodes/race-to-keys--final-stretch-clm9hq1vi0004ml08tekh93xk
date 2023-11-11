@@ -53,8 +53,7 @@ const TopBar = () => {
                     },
                     {
                       key: "My History",
-                      onClick: () => {},
-                      label: "My History",
+                      label: <Link href={`/history`}>My History</Link>,
                     },
                     {
                       itemIcon: <BiLogOut />,
