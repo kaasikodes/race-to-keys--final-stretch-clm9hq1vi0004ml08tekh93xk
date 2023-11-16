@@ -20,11 +20,12 @@ export async function GET(request: Request) {
     !!session?.user.hasAptosAccountAndPrivateKey;
 
   if (hasAptosAccountAndPrivateKey) {
-    return NextResponse.json({
-      message: "Private Key has already been secured!",
-      user: session?.user,
-      success: false,
-    });
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+    // return NextResponse.json({
+    //   message: "Private Key has already been secured!",
+    //   user: session?.user,
+    //   success: false,
+    // });
   }
   //   create private key & aptos account
   const privateKey = newPrivateKey();
