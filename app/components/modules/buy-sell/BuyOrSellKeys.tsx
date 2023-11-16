@@ -88,14 +88,14 @@ const BuyOrSellKeys: React.FC<Partial<IProps> & IModalProps> = ({
                             "Amount must be greater than 0"
                           );
                         }
-                        if (
-                          data?.data.keySupply &&
-                          value > data?.data.keySupply
-                        ) {
-                          return Promise.reject(
-                            "Amount must be less than or equal to total supply"
-                          );
-                        }
+                        // if (
+                        //   data?.data.keySupply &&
+                        //   value > data?.data.keySupply
+                        // ) {
+                        //   return Promise.reject(
+                        //     "Amount must be less than or equal to total supply"
+                        //   );
+                        // }
                         //   value should be whole number
                         if (value % 1 !== 0) {
                           return Promise.reject(
