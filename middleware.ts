@@ -53,5 +53,10 @@ export const config = {
     "/account",
     "/buy-sell",
     "/history",
+    "/api/dashboard/:path*",
+    "/api/keys/:path*",
+    "/api/user/auth/:path*",
+    "/api/user/account/profile/:path*",
+    "/api/user/account/transfer/:path*",
   ],
 };
