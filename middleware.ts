@@ -46,5 +46,12 @@ export default withAuth(
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/home", "/dashboard/:path*"],
+  matcher: [
+    "/",
+    "/home",
+    "/dashboard/:path*",
+    "/account",
+    "/buy-sell",
+    "/history",
+  ],
 };
