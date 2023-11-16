@@ -339,19 +339,23 @@ export async function getKeySubjectsData() {
     success: true,
     data: {
       allKeySubjects: {
-        data: allKeySubjectsWithAvailableUsers.map((item) => ({
-          keys: item.keys,
-          keySubjectAddress: item.address,
-          user: item.user,
-        })),
+        data: allKeySubjectsWithAvailableUsers
+          .map((item) => ({
+            keys: item.keys,
+            keySubjectAddress: item.address,
+            user: item.user,
+          }))
+          .reverse(),
         total: allKeySubjectsWithAvailableUsers.length,
       },
       userKeySubjects: {
-        data: userKeySubjectsWithAvailableUsers.map((item) => ({
-          keys: item.keys,
-          keySubjectAddress: item.address,
-          user: item.user,
-        })),
+        data: userKeySubjectsWithAvailableUsers
+          .map((item) => ({
+            keys: item.keys,
+            keySubjectAddress: item.address,
+            user: item.user,
+          }))
+          .reverse(), //to ensure that the latest key subject is at the top
         total: userKeySubjectsWithAvailableUsers.length,
       },
     },
