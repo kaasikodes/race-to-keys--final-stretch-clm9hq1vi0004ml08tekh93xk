@@ -342,6 +342,7 @@ export async function getKeySubjectsData() {
         data: allKeySubjectsWithAvailableUsers.map((item) => ({
           keys: item.keys,
           keySubjectAddress: item.address,
+          user: item.user,
         })),
         total: allKeySubjectsWithAvailableUsers.length,
       },
@@ -349,6 +350,7 @@ export async function getKeySubjectsData() {
         data: userKeySubjectsWithAvailableUsers.map((item) => ({
           keys: item.keys,
           keySubjectAddress: item.address,
+          user: item.user,
         })),
         total: userKeySubjectsWithAvailableUsers.length,
       },
