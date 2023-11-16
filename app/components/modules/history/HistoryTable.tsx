@@ -1,9 +1,11 @@
-import { ContractTradeEvent } from "@/lib/types";
+import { ContractTradeEvent, THistoryResponse } from "@/lib/types";
 import Table from "../../ui/table";
 import { truncateString } from "@/lib/utils";
 
 const HistoryTable: React.FC<{
-  data?: (ContractTradeEvent & { id?: number })[];
+  data?: (THistoryResponse["data"]["allHistory"]["data"][0] & {
+    id?: number;
+  })[];
   total?: number;
 }> = ({ data, total }) => {
   return (
@@ -25,6 +27,13 @@ const HistoryTable: React.FC<{
             key: "Sequence Number",
             title: "Sequence Number",
             render: (_, record) => record.sequence_number,
+          },
+          {
+            key: "Username",
+            title: "Username",
+            render: (_, record, index) => (
+              <span>{record.user?.username ?? "N/A"}</span>
+            ),
           },
           {
             key: "Trader",

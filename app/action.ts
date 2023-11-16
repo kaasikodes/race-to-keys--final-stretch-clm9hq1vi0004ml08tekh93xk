@@ -363,8 +363,26 @@ export async function getKeySubjectsData() {
   return response;
 }
 export async function getTradeHistoryData() {
-  const { address } = await isUserKeyInitialized();
+  const dbUsers = await prisma.user.findMany();
+  const users = await Promise.all(
+    dbUsers.map(async (user) => await _isUserKeyInitialized(user.id))
+  );
+
+  const { address, user } = await isUserKeyInitialized();
   const tradeHistory = await getTradeHistory();
+  const tradeHistoryWithAvailableUsers = await Promise.all(
+    tradeHistory.map(async (history) => {
+      const user = users.find(
+        (user) =>
+          new HexString(user.address).toShortString() ===
+          new HexString(history.data.trader).toShortString()
+      )?.user;
+      if (!user) {
+        return { ...history, user: undefined };
+      }
+      return { ...history, user };
+    })
+  );
   const userTradeHistory = tradeHistory.filter(
     (item) =>
       new HexString(item.data.trader).toShortString() ===
@@ -375,11 +393,14 @@ export async function getTradeHistoryData() {
     success: true,
     data: {
       allHistory: {
-        data: tradeHistory,
-        total: tradeHistory.length,
+        data: tradeHistoryWithAvailableUsers,
+        total: tradeHistoryWithAvailableUsers.length,
       },
       userHistory: {
-        data: userTradeHistory,
+        data: userTradeHistory.map((item) => ({
+          ...item,
+          user,
+        })),
         total: userTradeHistory.length,
       },
     },

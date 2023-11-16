@@ -107,11 +107,11 @@ export type THistoryResponse = {
   data: {
     userHistory: {
       total: number;
-      data: ContractTradeEvent[];
+      data: (ContractTradeEvent & { user?: User })[];
     };
     allHistory: {
       total: number;
-      data: ContractTradeEvent[];
+      data: (ContractTradeEvent & { user?: User })[];
     };
   };
 };
