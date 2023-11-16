@@ -34,8 +34,7 @@ const HistoryTable: React.FC<{
           {
             key: "Type",
             title: "Type",
-            render: (_, record) => record.type,
-            ellipsis: true,
+            render: (_, record) => truncateString(record.type, 14),
           },
           {
             key: "Subject",
