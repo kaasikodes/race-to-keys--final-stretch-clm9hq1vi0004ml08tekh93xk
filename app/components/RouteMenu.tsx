@@ -1,30 +1,34 @@
+"use client";
+import { usePathname } from "next/navigation";
 import Menu from "./ui/menu";
 import Link from "next/link";
 
 const RouteMenu: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
+  const pathname = usePathname();
   if (!isLoggedIn) {
     return null;
   }
   return (
     <Menu
+      activeKey={pathname}
       mode="horizontal"
       className="flex-1 justify-center mb-0 border-none  bg-transparent"
       items={[
         {
-          key: "Dashboard",
+          key: `/dashboard`,
           label: <Link href={`/dashboard`}>Dashboard</Link>,
         },
         {
-          key: "Accounts",
+          key: `/account`,
           label: <Link href={`/account`}>Accounts</Link>,
         },
         {
-          key: "Buy",
+          key: `/buy-sell`,
           label: <Link href={`/buy-sell`}>Buy/Sell</Link>,
         },
 
         {
-          key: "History",
+          key: `/history`,
           label: <Link href={`/history`}>Trade History</Link>,
         },
       ]}
