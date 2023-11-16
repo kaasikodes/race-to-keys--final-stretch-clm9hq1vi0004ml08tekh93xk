@@ -18,7 +18,7 @@ const KeyHoldersTable: React.FC<{
     <>
       <div>
         <Table
-        scroll={{ x: "max-content" }}
+          scroll={{ x: "max-content" }}
           dataSource={data?.map((item, i) => ({
             ...item,
             id: i + 1,
@@ -29,6 +29,13 @@ const KeyHoldersTable: React.FC<{
               key: "S/N",
               title: "S/N",
               render: (_, { id }) => id,
+            },
+            {
+              key: "Username",
+              title: "Username",
+              render: (_, record, index) => (
+                <span>{record.user?.username ?? "N/A"}</span>
+              ),
             },
             {
               key: "Subject Address",

@@ -52,17 +52,17 @@ export type TKeySubjectResponse = {
 
   data: {
     allKeySubjects: {
-      data: {
+      data: ({
         keySubjectAddress: string;
         keys: number;
-      }[];
+      } & { user?: User })[];
       total: number;
     };
     userKeySubjects: {
-      data: {
+      data: ({
         keySubjectAddress: string;
         keys: number;
-      }[];
+      } & { user?: User })[];
       total: number;
     };
   };

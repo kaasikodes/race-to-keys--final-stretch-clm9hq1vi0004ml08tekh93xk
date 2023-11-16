@@ -299,26 +299,58 @@ export async function userBuyKeys(props: {
   }
 }
 export async function getKeySubjectsData() {
+  const dbUsers = await prisma.user.findMany();
+  const users = await Promise.all(
+    dbUsers.map(async (user) => await _isUserKeyInitialized(user.id))
+  );
+
   const { user } = await isUserKeyInitialized();
   const userKeySubjects = await getKeySubjects(user);
+  const userKeySubjectsWithAvailableUsers = await Promise.all(
+    userKeySubjects.map(async (collection) => {
+      const user = users.find(
+        (user) =>
+          new HexString(user.address).toShortString() ===
+          new HexString(collection.address).toShortString()
+      )?.user;
+      if (!user) {
+        return { ...collection, user: undefined };
+      }
+      return { ...collection, user };
+    })
+  );
+
   const allKeySubjects = await getKeySubjects();
+  const allKeySubjectsWithAvailableUsers = await Promise.all(
+    userKeySubjects.map(async (collection) => {
+      const user = users.find(
+        (user) =>
+          new HexString(user.address).toShortString() ===
+          new HexString(collection.address).toShortString()
+      )?.user;
+      if (!user) {
+        return { ...collection, user: undefined };
+      }
+      return { ...collection, user };
+    })
+  );
   const response: TKeySubjectResponse = {
     message: "Key subjects retrieved successfully!",
     success: true,
     data: {
       allKeySubjects: {
-        data: allKeySubjects.map((item) => ({
+        data: allKeySubjectsWithAvailableUsers.map((item) => ({
           keys: item.keys,
           keySubjectAddress: item.address,
         })),
-        total: allKeySubjects.length,
+        total: allKeySubjectsWithAvailableUsers.length,
       },
       userKeySubjects: {
-        data: userKeySubjects.map((item) => ({
+        data: userKeySubjectsWithAvailableUsers.map((item) => ({
           keys: item.keys,
           keySubjectAddress: item.address,
         })),
-        total: userKeySubjects.length,
+        total: userKeySubjectsWithAvailableUsers.length,
       },
     },
   };
