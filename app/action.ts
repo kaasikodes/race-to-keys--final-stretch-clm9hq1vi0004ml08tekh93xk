@@ -322,7 +322,7 @@ export async function getKeySubjectsData() {
 
   const allKeySubjects = await getKeySubjects();
   const allKeySubjectsWithAvailableUsers = await Promise.all(
-    userKeySubjects.map(async (collection) => {
+    allKeySubjects.map(async (collection) => {
       const user = users.find(
         (user) =>
           new HexString(user.address).toShortString() ===
