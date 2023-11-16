@@ -1,9 +1,9 @@
 import React from "react";
 import Table from "../../ui/table";
-import { TOwnedCollection } from "@/lib/types";
+import { TDBResponse, TOwnedCollection } from "@/lib/types";
 
 const MyOwnedCollectionsCard: React.FC<{
-  data?: TOwnedCollection[];
+  data?: TDBResponse["data"]["ownedCollections"]["data"];
   total?: number;
 }> = ({ data, total }) => {
   return (
@@ -21,6 +21,13 @@ const MyOwnedCollectionsCard: React.FC<{
               key: "S/N",
               title: "S/N",
               render: (_, record, index) => index + 1,
+            },
+            {
+              key: "Username",
+              title: "Username",
+              render: (_, record, index) => (
+                <span>{record.user?.username ?? "N/A"}</span>
+              ),
             },
             {
               key: "Collection Address",

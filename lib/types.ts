@@ -135,7 +135,7 @@ export type TDBResponse = {
     };
     ownedCollections: {
       total: number;
-      data: TOwnedCollection[];
+      data: (TOwnedCollection & { user?: User })[];
     };
   };
 };

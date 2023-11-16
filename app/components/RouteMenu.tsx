@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const RouteMenu: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
   const pathname = usePathname();
+  console.log(pathname, "PATHNAME");
   if (!isLoggedIn) {
     return null;
   }

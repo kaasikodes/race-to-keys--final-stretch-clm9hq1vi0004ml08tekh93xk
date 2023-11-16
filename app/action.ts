@@ -58,6 +58,23 @@ export async function getUserDBData() {
   };
   const accountBalance = await getAptosBalance(address);
   const ownedCollections = await getOwnedCollections(user);
+  const dbUsers = await prisma.user.findMany();
+  const users = await Promise.all(
+    dbUsers.map(async (user) => await _isUserKeyInitialized(user.id))
+  );
+  const ownedCollectionsWithAvailableUsers = await Promise.all(
+    ownedCollections.map(async (collection) => {
+      const user = users.find(
+        (user) =>
+          new HexString(user.address).toShortString() ===
+          new HexString(collection.address).toShortString()
+      )?.user;
+      if (!user) {
+        return { ...collection, user: undefined };
+      }
+      return { ...collection, user };
+    })
+  );
   const tradeHistory = await getTradeHistory();
   const userTradeHistory = tradeHistory.filter(
     (item) =>
@@ -76,10 +93,11 @@ export async function getUserDBData() {
         subjectFeePercentage,
       },
       ownedCollections: {
-        total: ownedCollections.length,
-        data: ownedCollections.map((item) => ({
+        total: ownedCollectionsWithAvailableUsers.length,
+        data: ownedCollectionsWithAvailableUsers.map((item) => ({
           collectionAddress: item.address,
           keysOwned: item.keys,
+          user: item.user,
         })),
       },
       recentTradeHistory: {
