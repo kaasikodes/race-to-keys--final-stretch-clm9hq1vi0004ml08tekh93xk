@@ -32,6 +32,7 @@ const MyOwnedCollectionsCard: React.FC<{
             {
               key: "Collection Address",
               title: "Collection Address",
+              ellipsis: true,
               render: (_, record, index) => (
                 <span>{record.collectionAddress}</span>
               ),
