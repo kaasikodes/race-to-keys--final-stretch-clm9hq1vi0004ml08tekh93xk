@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "../../ui/table";
 import { TDBResponse, TOwnedCollection } from "@/lib/types";
+import SellKeyBtn from "../buy-sell/SellKeyBtn";
 
 const MyOwnedCollectionsCard: React.FC<{
   data?: TDBResponse["data"]["ownedCollections"]["data"];
@@ -41,6 +42,15 @@ const MyOwnedCollectionsCard: React.FC<{
               key: "Keys Owned",
               title: "Keys Owned",
               render: (_, record, index) => <span>{record.keysOwned}</span>,
+            },
+            {
+              key: "actions",
+              title: "",
+              render: (_, record) => (
+                <div className="flex gap-4">
+                  <SellKeyBtn keySubjectAddress={record.collectionAddress} />
+                </div>
+              ),
             },
           ]}
           size="small"
