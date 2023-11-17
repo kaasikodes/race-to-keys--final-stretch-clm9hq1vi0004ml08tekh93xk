@@ -36,7 +36,7 @@ const ViewPrivateKey: React.FC<Partial<IProps> & IModalProps> = ({
             onClick={() => setAction(action === "hide" ? "show" : "hide")}
           />
           {action === "show" && (
-            <Typography.Title>{data?.data.privateKey}</Typography.Title>
+            <Typography.Title>{data?.data?.privateKey}</Typography.Title>
           )}
         </div>
       </Skeleton>

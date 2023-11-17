@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 export const QUERY_KEY_FOR_AUTH_USER_PRIVATE_KEY = "auth-user-private-key";
 
 const getData = async (): Promise<TAuthUserPrivateKeyResponse> => {
-  const url = `/api/user/account/private-key/`;
+  const url = `/api/user/account/private-key`;
   const config = {
     headers: {
       Accept: "application/json",

@@ -48,7 +48,7 @@ const TopBar = () => {
         <div className="px-5 lg:px-12 flex items-center justify-between x-container">
           <div className="flex flex-1 items-center gap-3">
             <Link
-              href="/dashboard"
+              href="/"
               className={
                 "transition-all duration-500 ease-in-out flex gap-2 items-center"
               }
