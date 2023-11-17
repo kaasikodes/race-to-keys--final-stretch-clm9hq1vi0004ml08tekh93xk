@@ -288,8 +288,8 @@ export async function userSellKeys(props: {
 }
 
 export async function getAuthUserPrivateKey() {
+  const { user } = await isUserKeyInitialized();
   try {
-    const { user } = await isUserKeyInitialized();
     const response: TAuthUserPrivateKeyResponse = {
       message: "Your private key retrieved successfully!",
       success: true,
@@ -302,7 +302,7 @@ export async function getAuthUserPrivateKey() {
     return {
       message: "Your private key retrieval failed!",
       success: false,
-      data: null,
+      data: user,
     };
   }
 }
