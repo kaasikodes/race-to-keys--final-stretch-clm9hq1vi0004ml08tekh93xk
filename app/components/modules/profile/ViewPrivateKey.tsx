@@ -30,13 +30,17 @@ const ViewPrivateKey: React.FC<Partial<IProps> & IModalProps> = ({
       style={{ top: 10 }}
     >
       <Skeleton loading={isLoading} active paragraph={{ rows: 5 }}>
-        <div className="h-16 flex justify-center gap-4 flex-col">
+        <div className="min-h-[200px] flex justify-center gap-4 flex-col">
           <Button
             icon={action === "hide" ? <AiFillEyeInvisible /> : <AiFillEye />}
             onClick={() => setAction(action === "hide" ? "show" : "hide")}
-          />
+          >
+            {action === "hide" ? "Show" : "Hide"}
+          </Button>
           {action === "show" && (
-            <Typography.Title>{data?.data?.privateKey}</Typography.Title>
+            <Typography.Title level={4}>
+              {data?.data?.privateKey}
+            </Typography.Title>
           )}
         </div>
       </Skeleton>
