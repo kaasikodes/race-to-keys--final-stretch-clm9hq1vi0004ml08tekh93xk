@@ -75,7 +75,10 @@ const KeyHoldersTable: React.FC<{
               render: (_, record) => (
                 <div className="flex gap-4">
                   <BuyKeyBtn keySubjectAddress={record.keySubjectAddress} />
-                  <SellKeyBtn keySubjectAddress={record.keySubjectAddress} />
+                  <SellKeyBtn
+                    keySubjectAddress={record.keySubjectAddress}
+                    disabled={record.keys === 0}
+                  />
                 </div>
               ),
             },

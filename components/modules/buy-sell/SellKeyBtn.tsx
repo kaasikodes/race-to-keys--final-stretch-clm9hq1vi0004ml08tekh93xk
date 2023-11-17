@@ -6,9 +6,10 @@ import { useSellKeys } from "@/app/hooks/keys/useSellKeys";
 import { QUERY_KEY_FOR_KEY_SUBJECT_DETAILS } from "@/app/hooks/keys/useGetKeySubjectDetails";
 import { openNotification } from "@/lib/utils/notifications";
 
-const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
-  keySubjectAddress,
-}) => {
+const SellKeyBtn: React.FC<{
+  keySubjectAddress: string;
+  disabled?: boolean;
+}> = ({ keySubjectAddress, disabled }) => {
   const [view, setView] = useState(false);
   const queryClient = useQueryClient();
 
@@ -68,7 +69,7 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
           isLoading,
         }}
       />
-      <Button size="small" onClick={() => setView(true)}>
+      <Button size="small" onClick={() => setView(true)} disabled={disabled}>
         Sell
       </Button>
     </>

@@ -121,7 +121,10 @@ const BuyOrSellKeys: React.FC<Partial<IProps> & IModalProps> = ({
                 onConfirm,
                 amount,
                 transactionType,
-                onCancel: () => setAction("enter-amount"),
+                onCancel: () => {
+                  setAction("enter-amount");
+                  setAmount(0);
+                },
               }}
             />
           )}
