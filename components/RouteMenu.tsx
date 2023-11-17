@@ -11,7 +11,7 @@ const RouteMenu: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
   }
   return (
     <Menu
-      defaultValue={pathname}
+      defaultSelectedKeys={[pathname]}
       mode="horizontal"
       className="flex-1 justify-center mb-0 border-none  bg-transparent"
       items={[
