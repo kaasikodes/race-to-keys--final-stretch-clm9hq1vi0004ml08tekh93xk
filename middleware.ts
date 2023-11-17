@@ -49,7 +49,6 @@ export const config = {
   matcher: [
     "/",
     "/home",
-    "/dashboard/:path*",
     "/account",
     "/buy-sell",
     "/history",

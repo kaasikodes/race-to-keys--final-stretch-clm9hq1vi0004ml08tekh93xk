@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
 import UserInfoDBCard from "./UserInfoDBCard";
 import { Skeleton } from "antd";
 import MyRecentHistoryCard from "./MyRecentHistoryCard";
@@ -12,6 +12,11 @@ import { useRouter } from "next/navigation";
 const DBContainer: React.FC<{ data?: TDBResponse }> = ({ data }) => {
   const { data: session, status } = useSession();
   const { push } = useRouter();
+  useEffect(() => {
+    if (!!session === false) {
+      push("/login");
+    }
+  }, [push, session]);
   return (
     <Skeleton active loading={status === "loading"} paragraph={{ rows: 24 }}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-5">
