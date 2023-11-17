@@ -14,7 +14,7 @@ const DBContainer: React.FC<{ data?: TDBResponse }> = ({ data }) => {
   const { push } = useRouter();
   useEffect(() => {
     if (!!session === false) {
-      push("/login");
+      push("/auth/login");
     }
   }, [push, session]);
   return (
