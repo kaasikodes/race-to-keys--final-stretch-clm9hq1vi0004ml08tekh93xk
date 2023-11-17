@@ -92,7 +92,7 @@ const MyRecentHistoryCard: React.FC<IProps> = ({
       {total && total > LIMIT_OF_ITEMS_TO_DISPLAY ? (
         <h2
           onClick={() => handleViewMore?.()}
-          className="text-blacktext-right px-3 text-sm font-semibold cursor-pointer hover:text-black pb-2 pt-1"
+          className="text-blue-500 text-right px-3 text-sm font-semibold cursor-pointer hover:text-black pb-2 pt-1"
         >
           See All
         </h2>

@@ -16,7 +16,7 @@ const PageHeader = ({ title, link, close, loading }: introProps) => {
         {close && (
           <i
             onClick={close}
-            className="ri-arrow-left-s-line text-lg cursor-pointer hover:text-caramel"
+            className="ri-arrow-left-s-line text-lg cursor-pointer text-black"
           ></i>
         )}
         <h2 className="text-xl text-black capitalize">{title}</h2>

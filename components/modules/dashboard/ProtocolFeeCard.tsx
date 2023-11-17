@@ -6,9 +6,7 @@ const ProtocolFeeCard: React.FC<{ title?: string; text?: string }> = ({
 }) => {
   return (
     <div className="text-black border rounded-lg text-sm shadow px-5 pt-4 pb-6 flex-1">
-      <span className="text-blackfont-semibold text-lg text-blue-500">
-        {title}
-      </span>
+      <span className=" font-semibold text-lg text-blue-500">{title}</span>
       <h6 className="text-xs font-semibold">{text}</h6>
     </div>
   );
