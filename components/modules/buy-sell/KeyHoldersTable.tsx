@@ -9,7 +9,6 @@ import { useState } from "react";
 import BuyKeyBtn from "./BuyKeyBtn";
 import SellKeyBtn from "./SellKeyBtn";
 
-type TAction = "buy" | "sell";
 const KeyHoldersTable: React.FC<{
   data?: (TKeySubjectResponse["data"]["allKeySubjects"]["data"][0] & {
     id?: number;
@@ -77,7 +76,7 @@ const KeyHoldersTable: React.FC<{
                   <BuyKeyBtn keySubjectAddress={record.keySubjectAddress} />
                   <SellKeyBtn
                     keySubjectAddress={record.keySubjectAddress}
-                    disabled={record.keys === 0}
+                    disabled={record.keys === 0 ? true : false}
                   />
                 </div>
               ),
