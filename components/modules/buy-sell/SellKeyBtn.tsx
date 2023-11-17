@@ -15,7 +15,10 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
   const { mutate, isLoading } = useSellKeys();
   const handleClose = () => setView(false);
 
-  const handleSubmit = (data: { amount: number }) => {
+  const handleSubmit = (
+    data: { amount: number },
+    successCallback?: () => void
+  ) => {
     mutate(
       {
         keySubjectAddress,
@@ -45,6 +48,7 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
             queryKey: [QUERY_KEY_FOR_KEY_SUBJECT_DETAILS],
             // exact: true,
           });
+          successCallback?.();
           handleClose();
         },
       }
@@ -56,9 +60,13 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
       <BuyOrSellKeys
         onClose={handleClose}
         open={view}
-        keySubjectAddress={view === false ? undefined : keySubjectAddress}
+        keySubjectAddress={keySubjectAddress}
         transactionType={"sell"}
-        onConfirm={{ fn: (amount) => handleSubmit({ amount }), isLoading }}
+        onConfirm={{
+          fn: (amount, successCallback) =>
+            handleSubmit({ amount }, successCallback),
+          isLoading,
+        }}
       />
       <Button size="small" onClick={() => setView(true)}>
         Sell

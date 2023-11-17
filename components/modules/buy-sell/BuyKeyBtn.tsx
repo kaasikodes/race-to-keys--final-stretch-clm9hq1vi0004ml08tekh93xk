@@ -16,7 +16,10 @@ const BuyKeyBtn: React.FC<{
 
   const { mutate, isLoading } = useBuyKeys();
   const handleClose = () => setView(false);
-  const handleSubmit = (data: { amount: number }) => {
+  const handleSubmit = (
+    data: { amount: number },
+    successCallback?: () => void
+  ) => {
     mutate(
       {
         keySubjectAddress,
@@ -46,6 +49,7 @@ const BuyKeyBtn: React.FC<{
             queryKey: [QUERY_KEY_FOR_KEY_SUBJECT_DETAILS],
             // exact: true,
           });
+          successCallback?.();
           handleClose();
         },
       }
@@ -57,9 +61,13 @@ const BuyKeyBtn: React.FC<{
       <BuyOrSellKeys
         onClose={handleClose}
         open={view}
-        keySubjectAddress={view === false ? undefined : keySubjectAddress}
+        keySubjectAddress={keySubjectAddress}
         transactionType={"buy"}
-        onConfirm={{ fn: (amount) => handleSubmit({ amount }), isLoading }}
+        onConfirm={{
+          fn: (amount, successCallback) =>
+            handleSubmit({ amount }, successCallback),
+          isLoading,
+        }}
       />
       <Button
         type="primary"

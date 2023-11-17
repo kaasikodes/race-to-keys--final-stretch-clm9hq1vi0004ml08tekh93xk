@@ -12,7 +12,7 @@ import { IModalProps } from "@/lib/types";
 type IProps = {
   keySubjectAddress: string;
   onConfirm?: {
-    fn: (amount: number) => void;
+    fn: (amount: number, successCallback?: () => void) => void;
     isLoading?: boolean;
   };
   transactionType?: "buy" | "sell";
@@ -198,7 +198,7 @@ const ConfirmDetails: React.FC<
           </Button>
           <Button
             loading={props.onConfirm?.isLoading}
-            onClick={() => props.onConfirm?.fn(props.amount)}
+            onClick={() => props.onConfirm?.fn(props.amount, props?.onCancel)}
           >
             Confirm{" "}
           </Button>
