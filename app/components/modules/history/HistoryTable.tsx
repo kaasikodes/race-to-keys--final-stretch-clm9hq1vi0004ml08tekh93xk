@@ -1,6 +1,8 @@
 import { ContractTradeEvent, THistoryResponse } from "@/lib/types";
 import Table from "../../ui/table";
 import { truncateString } from "@/lib/utils";
+import { useState } from "react";
+import Input from "../../ui/input";
 
 const HistoryTable: React.FC<{
   data?: (THistoryResponse["data"]["allHistory"]["data"][0] & {
@@ -8,14 +10,37 @@ const HistoryTable: React.FC<{
   })[];
   total?: number;
 }> = ({ data, total }) => {
+  const [search, setSearch] = useState<string>();
+
   return (
-    <div>
+    <div className="flex flex-col gap-6 py-2">
+      <div className="flex self-end w-1/5">
+        <Input.Search
+          placeholder="Search by username/trader/subject"
+          value={search}
+          allowClear
+          onSearch={(value) => setSearch(value)}
+        />
+      </div>
       <Table
         scroll={{ x: "max-content" }}
-        dataSource={data?.map((item, i) => ({
-          ...item,
-          id: i + 1,
-        }))}
+        dataSource={data
+          ?.map((item, i) => ({
+            ...item,
+            id: i + 1,
+          }))
+          .filter(
+            (item) =>
+              item.user?.name
+                .toLowerCase()
+                .includes(search?.toLowerCase() || "") ||
+              item.data.trader
+                .toLowerCase()
+                .includes(search?.toLowerCase() || "") ||
+              item.data.subject
+                .toLowerCase()
+                .includes(search?.toLowerCase() || "")
+          )}
         pagination={{ total }}
         columns={[
           {

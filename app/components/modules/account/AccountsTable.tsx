@@ -41,7 +41,7 @@ const AccountsTable: React.FC<{ data?: TCollection[]; total?: number }> = ({
         <div className="flex flex-col gap-6 py-2">
           <div className="flex self-end w-1/5">
             <Input.Search
-              placeholder="Search User Accounts"
+              placeholder="Search by username or address"
               allowClear
               onSearch={(value) => setSearch(value)}
             />
@@ -49,8 +49,14 @@ const AccountsTable: React.FC<{ data?: TCollection[]; total?: number }> = ({
           <Table
             scroll={{ x: "max-content" }}
             pagination={{ total }}
-            dataSource={data?.filter((item) =>
-              item.userName.toLowerCase().includes(search?.toLowerCase() || "")
+            dataSource={data?.filter(
+              (item) =>
+                item.userName
+                  .toLowerCase()
+                  .includes(search?.toLowerCase() || "") ||
+                item.subjectKeyAddress
+                  .toLowerCase()
+                  .includes(search?.toLowerCase() || "")
             )}
             columns={[
               {
@@ -98,6 +104,7 @@ const AccountsTable: React.FC<{ data?: TCollection[]; total?: number }> = ({
                     />
                     <Button
                       type="dashed"
+                      size="small"
                       onClick={() => handleAction("view", record.userId)}
                     >
                       View Profile
