@@ -1,5 +1,5 @@
 import { getKeySubjectsData } from "../action";
-import BuyOrSellContainer from "../components/modules/buy-sell/BuyOrSellContainer";
+import BuyOrSellContainer from "../../components/modules/buy-sell/BuyOrSellContainer";
 
 const Sell = async () => {
   const data = await getKeySubjectsData();

@@ -1,5 +1,5 @@
 import { getTradeHistoryData } from "../action";
-import HistoryContainer from "../components/modules/history/HistoryContainer";
+import HistoryContainer from "../../components/modules/history/HistoryContainer";
 
 const History = async () => {
   const data = await getTradeHistoryData();

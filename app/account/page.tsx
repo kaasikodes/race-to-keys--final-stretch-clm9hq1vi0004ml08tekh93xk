@@ -1,5 +1,5 @@
 import { getUserAccounts } from "../action";
-import AccountContainer from "../components/modules/account/AccountContainer";
+import AccountContainer from "../../components/modules/account/AccountContainer";
 
 const Account = async () => {
   const response = await getUserAccounts();
