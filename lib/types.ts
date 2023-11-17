@@ -142,6 +142,7 @@ export type TDBResponse = {
       accountBalance: number;
       email: string;
       isKeyInitialized: boolean;
+      phone: string;
     };
     fees: {
       protocolFeePercentage: number;

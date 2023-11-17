@@ -41,6 +41,10 @@ export async function getUserDBData() {
     where: {
       userId: session?.user.id,
     },
+    select: {
+      user: true,
+      value_via_password: true,
+    },
   });
 
   const privateKeyDecrypted = decrypt(
@@ -109,8 +113,9 @@ export async function getUserDBData() {
       userInfo: {
         accountBalance,
         address,
-        email: session?.user.email as string,
+        email: dbPrivateKey?.user?.email as string,
         isKeyInitialized,
+        phone: dbPrivateKey?.user?.phone as string,
       },
     },
   };
