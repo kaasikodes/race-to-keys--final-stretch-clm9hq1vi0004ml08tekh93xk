@@ -8,7 +8,7 @@ const MyOwnedCollectionsCard: React.FC<{
   total?: number;
 }> = ({ data, total }) => {
   return (
-    <div className="bg-mainBg  border rounded-lg text-sm shadow pt-4 pb-6 flex-1">
+    <div className="  border rounded-lg text-sm shadow pt-4 pb-6 flex-1">
       <div className="flex items-center justify-between px-5 py-3 border-b">
         <p className="font-medium">{`My Owned Collections`}</p>
       </div>

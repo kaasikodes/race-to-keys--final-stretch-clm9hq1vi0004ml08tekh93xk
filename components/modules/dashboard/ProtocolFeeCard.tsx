@@ -5,7 +5,7 @@ const ProtocolFeeCard: React.FC<{ title?: string; text?: string }> = ({
   text,
 }) => {
   return (
-    <div className="bg-mainBg  border rounded-lg text-sm shadow px-5 pt-4 pb-6 flex-1">
+    <div className="  border rounded-lg text-sm shadow px-5 pt-4 pb-6 flex-1">
       <span className="text-caramel font-semibold text-lg text-blue-500">
         {title}
       </span>
