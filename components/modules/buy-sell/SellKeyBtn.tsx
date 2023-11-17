@@ -34,9 +34,9 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
         },
         onSuccess: (res: any) => {
           openNotification({
-            state: "success",
+            state: res?.data?.success ? "success" : "error",
+            title: res?.data?.success ? "Success" : "Error",
 
-            title: "Success",
             description: res.data.message,
             // duration: 0.4,
           });
@@ -56,7 +56,7 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
       <BuyOrSellKeys
         onClose={handleClose}
         open={view}
-        keySubjectAddress={keySubjectAddress}
+        keySubjectAddress={view !== undefined ? undefined : keySubjectAddress}
         transactionType={"sell"}
         onConfirm={{ fn: (amount) => handleSubmit({ amount }), isLoading }}
       />
