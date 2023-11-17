@@ -103,7 +103,11 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
             <Avatar src={data?.data.imageSrc} size={`large`} />
           </div>
           <Form.Item name={`username`} label="Username">
-            <Input />
+            <Input disabled />
+            {/* User should not be able to edit username, should be simply from twitter 4 time being */}
+          </Form.Item>
+          <Form.Item name={`address`} label="Address">
+            <Input.TextArea disabled />
           </Form.Item>
           <Form.Item name={`email`} label="Email">
             <Input />
@@ -111,9 +115,7 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
           <Form.Item name={`phone`} label="Phone">
             <Input />
           </Form.Item>
-          <Form.Item name={`address`} label="Address">
-            <Input.TextArea />
-          </Form.Item>
+
           {disabled ? null : (
             <div className="flex justify-end">
               <Button loading={isUpdating} htmlType="submit">
