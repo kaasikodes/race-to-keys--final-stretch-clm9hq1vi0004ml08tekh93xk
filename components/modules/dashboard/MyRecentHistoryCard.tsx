@@ -36,7 +36,7 @@ const MyRecentHistoryCard: React.FC<IProps> = ({
   emptyComp = <Empty description="No Data" />,
 }) => {
   return (
-    <div className=" pb-6 border rounded-lg text-sm shadow">
+    <div className="text-black pb-6 border rounded-lg text-sm shadow">
       <div className="flex items-center justify-between px-3 py-3 border-b">
         <p className="font-medium">{title}</p>
         <span className="text-xs capitalize">{secondaryColTitle}</span>
