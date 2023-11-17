@@ -77,7 +77,7 @@ const TransferAptos: React.FC<Partial<IProps> & IModalProps> = ({
         onFinish={handleSubmit}
       >
         <Form.Item name={`address`} label="Address">
-          <Input />
+          <Input placeholder="Please enter receipient address" />
         </Form.Item>
         <Form.Item
           name={`amount`}
@@ -98,7 +98,10 @@ const TransferAptos: React.FC<Partial<IProps> & IModalProps> = ({
             },
           ]}
         >
-          <InputNumber className="w-full" />
+          <InputNumber
+            className="w-full"
+            placeholder="Please enter amount to transfer"
+          />
         </Form.Item>
 
         <div className="flex justify-end">

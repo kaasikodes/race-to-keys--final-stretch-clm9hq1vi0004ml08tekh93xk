@@ -30,7 +30,11 @@ const ViewPrivateKey: React.FC<Partial<IProps> & IModalProps> = ({
       style={{ top: 10 }}
     >
       <Skeleton loading={isLoading} active paragraph={{ rows: 5 }}>
-        <div className="min-h-[200px] flex justify-center gap-4 flex-col items-center">
+        <div className="min-h-[200px] flex justify-center gap-4 flex-col items-center text-center">
+          <p className="text-sm text-red-500">
+            Ensure to safeguard this private key! As once this is exposed to
+            anyone they can access your funds!
+          </p>
           <Button
             icon={action === "hide" ? <AiFillEyeInvisible /> : <AiFillEye />}
             onClick={() => setAction(action === "hide" ? "show" : "hide")}
