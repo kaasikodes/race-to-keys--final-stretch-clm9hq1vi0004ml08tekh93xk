@@ -56,7 +56,7 @@ const SellKeyBtn: React.FC<{ keySubjectAddress: string }> = ({
       <BuyOrSellKeys
         onClose={handleClose}
         open={view}
-        keySubjectAddress={view === undefined ? undefined : keySubjectAddress}
+        keySubjectAddress={view === false ? undefined : keySubjectAddress}
         transactionType={"sell"}
         onConfirm={{ fn: (amount) => handleSubmit({ amount }), isLoading }}
       />
