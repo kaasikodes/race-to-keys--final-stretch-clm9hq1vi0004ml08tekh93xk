@@ -309,10 +309,11 @@ export async function getUserData(props: { userId: string }) {
       message: "User data retrieved successfully!",
       success: true,
       data: {
-        email: user.username,
+        email: dbUser?.email,
         phone: dbUser?.phone,
         address: user.publicKey,
         imageSrc: dbUser?.image,
+        userName: user.username,
       },
     };
     return response;

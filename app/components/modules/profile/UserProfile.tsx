@@ -40,6 +40,7 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
         address: data?.data?.address,
         email: data?.data?.email,
         phone: data?.data?.phone,
+        username: data?.data?.userName,
       });
     }
   }, [isSuccess, data, form]);
@@ -52,7 +53,7 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
       {
         body: {
           email: data.email,
-          phone: data.username,
+          phone: data.phone,
         },
         userId,
       },
@@ -88,6 +89,7 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
       onCancel={onClose}
       footer={null}
       title={<span className="capitalize">{`${title}`}</span>}
+      style={{ top: 10 }}
     >
       <Skeleton loading={isLoading} paragraph={{ rows: 10 }}>
         <Form
@@ -95,10 +97,14 @@ const UserProfile: React.FC<Partial<IProps> & IModalProps> = ({
           requiredMark={false}
           form={form}
           disabled={disabled}
+          onFinish={handleSubmit}
         >
           <div className="flex justify-center mb-4">
-            <Avatar src={data?.data.imageSrc} />
+            <Avatar src={data?.data.imageSrc} size={`large`} />
           </div>
+          <Form.Item name={`username`} label="Username">
+            <Input />
+          </Form.Item>
           <Form.Item name={`email`} label="Email">
             <Input />
           </Form.Item>

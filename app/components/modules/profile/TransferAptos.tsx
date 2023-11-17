@@ -68,8 +68,14 @@ const TransferAptos: React.FC<Partial<IProps> & IModalProps> = ({
       onCancel={onClose}
       footer={null}
       title={<span className="capitalize">{`${title}`}</span>}
+      style={{ top: 10 }}
     >
-      <Form labelCol={{ span: 24 }} requiredMark={false} form={form}>
+      <Form
+        labelCol={{ span: 24 }}
+        requiredMark={false}
+        form={form}
+        onFinish={handleSubmit}
+      >
         <Form.Item name={`address`} label="Address">
           <Input />
         </Form.Item>

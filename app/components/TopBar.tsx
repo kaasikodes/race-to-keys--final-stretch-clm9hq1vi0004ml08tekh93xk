@@ -19,7 +19,7 @@ const TopBar = () => {
   const { data: session } = useSession();
   const [userId, setUserId] = useState<string>();
   const [action, setAction] = useState<TAction>();
-  const handleAction = (action: TAction, id: string) => {
+  const handleAction = (action: TAction, id?: string) => {
     setAction(action);
 
     setUserId(id);
@@ -82,10 +82,12 @@ const TopBar = () => {
                       {
                         key: "Private Key",
                         label: "Private Key",
+                        onClick: () => handleAction("view-private-key"),
                       },
                       {
                         key: "Tranfer Aptos",
                         label: "Tranfer Aptos",
+                        onClick: () => handleAction("transfer-aptos"),
                       },
                       {
                         key: "My History",

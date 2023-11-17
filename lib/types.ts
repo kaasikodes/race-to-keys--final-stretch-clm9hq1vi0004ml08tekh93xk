@@ -87,6 +87,7 @@ export type TGetUserDataResponse = {
     phone: string | null;
     address: string | null;
     imageSrc: string | null;
+    userName: string | null;
   }>;
 };
 export type TAuthUserPrivateKeyResponse = {

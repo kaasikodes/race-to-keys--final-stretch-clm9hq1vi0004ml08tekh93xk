@@ -27,6 +27,7 @@ const ViewPrivateKey: React.FC<Partial<IProps> & IModalProps> = ({
       onCancel={onClose}
       footer={null}
       title={<span className="capitalize">{`${title}`}</span>}
+      style={{ top: 10 }}
     >
       <Skeleton loading={isLoading} active paragraph={{ rows: 5 }}>
         <div className="h-16 flex justify-center gap-4 flex-col">
