@@ -40,7 +40,7 @@ const TopBar = () => {
         onClose={handleClose}
       />
       <ViewPrivateKey
-        title="View Private key"
+        title="Access Private key"
         open={action === "view-private-key"}
         onClose={handleClose}
       />
@@ -63,10 +63,45 @@ const TopBar = () => {
 
           {session && (
             <div className="flex gap-4 items-center">
-              <FaSearch className="lg:hidden" />
+              {/* <FaSearch className="lg:hidden" /> */}
+              <div className="flex items-center gap-2 lg:hidden">
+                <UserMenuDropdown
+                  avatarUrl={session.user?.image}
+                  userName={session.user.name}
+                  menuItems={[
+                    {
+                      key: "My Profile",
+                      label: "My Profile",
+                      onClick: () =>
+                        handleAction("view-profile", session.user.id),
+                    },
+                    {
+                      key: "Private Key",
+                      label: "Private Key",
+                      onClick: () => handleAction("view-private-key"),
+                    },
+                    {
+                      key: "Tranfer Aptos",
+                      label: "Tranfer Aptos",
+                      onClick: () => handleAction("transfer-aptos"),
+                    },
+                    {
+                      key: "My History",
+                      label: <Link href={`/history`}>My History</Link>,
+                    },
+                    {
+                      itemIcon: <BiLogOut />,
+
+                      key: "logout",
+                      onClick: () => signOut(),
+                      label: "Logout",
+                    },
+                  ]}
+                />
+              </div>
 
               <div className="lg:flex items-center gap-6 hidden">
-                <FaSearch className="text-blue-500 cursor-pointer" />
+                {/* <FaSearch className="text-blue-500 cursor-pointer" /> */}
 
                 <div className="flex items-center gap-2">
                   <UserMenuDropdown
