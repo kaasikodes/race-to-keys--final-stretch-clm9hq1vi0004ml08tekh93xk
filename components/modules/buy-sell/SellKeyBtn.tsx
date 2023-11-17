@@ -70,7 +70,7 @@ const SellKeyBtn: React.FC<{
         }}
       />
       <Button size="small" onClick={() => setView(true)} disabled={disabled}>
-        Sell_
+        Sell
       </Button>
     </>
   );
