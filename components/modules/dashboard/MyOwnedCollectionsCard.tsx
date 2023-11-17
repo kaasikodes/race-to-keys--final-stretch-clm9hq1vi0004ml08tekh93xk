@@ -10,7 +10,7 @@ const MyOwnedCollectionsCard: React.FC<{
   return (
     <div className="  border rounded-lg text-sm shadow pt-4 pb-6 flex-1">
       <div className="flex items-center justify-between px-5 py-3 border-b">
-        <p className="font-medium">{`My Owned Collections`}</p>
+        <p className="font-medium text-black">{`My Owned Collections`}</p>
       </div>
       <div className="flex flex-col gap-3 px-5 py-2">
         <Table
