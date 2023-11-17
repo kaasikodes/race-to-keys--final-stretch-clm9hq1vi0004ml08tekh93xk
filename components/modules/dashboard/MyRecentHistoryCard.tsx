@@ -36,7 +36,7 @@ const MyRecentHistoryCard: React.FC<IProps> = ({
   emptyComp = <Empty description="No Data" />,
 }) => {
   return (
-    <div className="bg-mainBg pb-6 border rounded-lg text-sm shadow">
+    <div className=" pb-6 border rounded-lg text-sm shadow">
       <div className="flex items-center justify-between px-3 py-3 border-b">
         <p className="font-medium">{title}</p>
         <span className="text-xs capitalize">{secondaryColTitle}</span>
@@ -92,7 +92,7 @@ const MyRecentHistoryCard: React.FC<IProps> = ({
       {total && total > LIMIT_OF_ITEMS_TO_DISPLAY ? (
         <h2
           onClick={() => handleViewMore?.()}
-          className="text-caramel text-right px-3 text-sm font-semibold cursor-pointer hover:text-accent pb-2 pt-1"
+          className="text-caramel text-right px-3 text-sm font-semibold cursor-pointer hover:text-black pb-2 pt-1"
         >
           See All
         </h2>

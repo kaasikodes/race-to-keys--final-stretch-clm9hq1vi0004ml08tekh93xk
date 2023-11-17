@@ -44,7 +44,7 @@ const TopBar = () => {
         open={action === "view-private-key"}
         onClose={handleClose}
       />
-      <div className="bg-white w-full py-3 sticky top-0 z-50 text-accent shadow-lg">
+      <div className="bg-white w-full py-3 sticky top-0 z-50 text-black shadow-lg">
         <div className="px-5 lg:px-12 flex items-center justify-between x-container">
           <div className="flex flex-1 items-center gap-3">
             <Link

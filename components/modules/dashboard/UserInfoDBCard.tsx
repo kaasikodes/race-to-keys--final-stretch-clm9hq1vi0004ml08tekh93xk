@@ -26,10 +26,10 @@ const UserInfoDBCard: React.FC<{
   const showFundMessage =
     !accountBalance || (accountBalance && accountBalance <= 0);
   return (
-    <div className="bg-mainBg shadow border rounded-md px-5 pt-4 pb-6">
-      <h5 className="font-semibold text-accent text-lg">Welcome {userName}</h5>
+    <div className=" shadow border rounded-md px-5 pt-4 pb-6">
+      <h5 className="font-semibold text-black text-lg">Welcome {userName}</h5>
       <div className="flex items-center gap-3 mt-3">
-        <span className="flex items-center gap-2 text-xs text-accent">
+        <span className="flex items-center gap-2 text-xs text-black">
           <FaCalendar />
           <span>{moment().format("DD MMMM YYYY")}</span>
         </span>
@@ -44,7 +44,7 @@ const UserInfoDBCard: React.FC<{
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
         <div>
-          <ul className="flex flex-col gap-2 text-xs text-accent">
+          <ul className="flex flex-col gap-2 text-xs text-black">
             <li>Address: {publicKey}</li>
             <li>
               Account Balance:{accountBalance}{" "}
