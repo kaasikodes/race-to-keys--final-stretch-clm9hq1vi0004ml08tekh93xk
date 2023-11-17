@@ -29,7 +29,7 @@ export async function POST(request: Request) {
   const receiver = body.address;
   await transferAptosTo(aptosAcccount, receiver, body.amount);
   return NextResponse.json({
-    message: "Tranfer successful",
+    message: "Transfer successful",
 
     success: true,
   });

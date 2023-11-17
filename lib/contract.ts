@@ -93,7 +93,7 @@ export async function transferAptosTo(
   const transfer = await coinClient.transfer(
     fundingAccount,
     accountToFund,
-    amount,
+    amount * 1_0000_0000,
     {
       createReceiverIfMissing: true,
     }

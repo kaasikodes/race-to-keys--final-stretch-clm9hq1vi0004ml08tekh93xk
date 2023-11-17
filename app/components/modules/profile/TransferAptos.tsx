@@ -98,7 +98,7 @@ const TransferAptos: React.FC<Partial<IProps> & IModalProps> = ({
             },
           ]}
         >
-          <InputNumber />
+          <InputNumber className="w-full" />
         </Form.Item>
 
         <div className="flex justify-end">
