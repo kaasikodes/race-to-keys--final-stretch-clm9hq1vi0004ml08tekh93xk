@@ -5,13 +5,14 @@ import Link from "next/link";
 
 const RouteMenu: React.FC<{ isLoggedIn: boolean }> = ({ isLoggedIn }) => {
   const pathname = usePathname();
-  console.log(pathname, "PATHNAME");
   if (!isLoggedIn) {
     return null;
   }
   return (
     <Menu
+      selectedKeys={[pathname]}
       defaultSelectedKeys={[pathname]}
+      activeKey={pathname}
       mode="horizontal"
       className="flex-1 justify-center mb-0 border-none  bg-transparent"
       items={[
