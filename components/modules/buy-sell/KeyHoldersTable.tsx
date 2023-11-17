@@ -76,7 +76,7 @@ const KeyHoldersTable: React.FC<{
                   <BuyKeyBtn keySubjectAddress={record.keySubjectAddress} />
                   <SellKeyBtn
                     keySubjectAddress={record.keySubjectAddress}
-                    disabled={record.keys === 0 ? true : false}
+                    disabled={!!record?.keys}
                   />
                 </div>
               ),
