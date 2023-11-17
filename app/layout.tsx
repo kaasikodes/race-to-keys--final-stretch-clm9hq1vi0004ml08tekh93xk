@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import SessionProvider from "./components/SessionProvider";
+import SessionProvider from "../components/SessionProvider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-import TopBar from "./components/TopBar";
-import ReactQueryClientProvider from "./components/ReactQueryClientProvider";
+import TopBar from "../components/TopBar";
+import ReactQueryClientProvider from "../components/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 

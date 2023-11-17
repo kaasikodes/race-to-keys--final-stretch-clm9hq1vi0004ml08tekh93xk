@@ -1,4 +1,4 @@
-import LoginContainer from "@/app/components/modules/auth/LoginContainer";
+import LoginContainer from "@/components/modules/auth/LoginContainer";
 
 const Page = () => {
   return (
