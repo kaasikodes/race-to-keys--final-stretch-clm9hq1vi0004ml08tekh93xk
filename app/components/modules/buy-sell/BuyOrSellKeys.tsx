@@ -7,11 +7,7 @@ import Skeleton from "../../ui/skeleton";
 import { useGetKeySubjectDetails } from "@/app/hooks/keys/useGetKeySubjectDetails";
 import ProtocolFeeCard from "../dashboard/ProtocolFeeCard";
 import { useEffect, useState } from "react";
-
-type IModalProps = {
-  open: boolean;
-  onClose: () => void;
-};
+import { IModalProps } from "@/lib/types";
 
 type IProps = {
   keySubjectAddress: string;

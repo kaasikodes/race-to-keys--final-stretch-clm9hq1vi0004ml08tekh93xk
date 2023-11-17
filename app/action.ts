@@ -19,8 +19,10 @@ import {
   sellKeys,
 } from "@/lib/contract";
 import {
+  TAuthUserPrivateKeyResponse,
   TDBResponse,
   TGetUserAccountsResponse,
+  TGetUserDataResponse,
   THistoryResponse,
   TKeySubjectDetailsResponse,
   TKeySubjectResponse,
@@ -147,15 +149,15 @@ async function _isUserKeyInitialized(userId?: string) {
       new HexString(item.address).toShortString() ===
         new HexString(address).toShortString() && item.keys > 0
   );
-  console.log(isKeyInitialized, "KEY HERW");
-  return { isKeyInitialized, user, address };
+  return { isKeyInitialized, user, address, userId, dbUser };
 }
 export async function isUserKeyInitialized() {
   const session = await getServerSession(authOptions);
+  const userId = session?.user.id;
   const { isKeyInitialized, user, address } = await _isUserKeyInitialized(
-    session?.user.id
+    userId
   );
-  return { isKeyInitialized, user, address };
+  return { isKeyInitialized, user, address, userId };
 }
 
 export async function initializeUserKey() {
@@ -196,6 +198,7 @@ export async function getUserAccounts(props: { search?: string } = {}) {
         user,
         isKeyInitialized,
         ...accountKeySubjectDetails.data,
+        userId: account?.id as string,
       };
       return response;
     };
@@ -274,6 +277,77 @@ export async function userSellKeys(props: {
   } catch (error) {
     return {
       message: "Key acquisition failed!",
+      success: false,
+    };
+  }
+}
+
+export async function getAuthUserPrivateKey() {
+  try {
+    const { user } = await isUserKeyInitialized();
+    const response: TAuthUserPrivateKeyResponse = {
+      message: "Your private key retrieved successfully!",
+      success: true,
+      data: {
+        privateKey: user.privateKey,
+      },
+    };
+    return response;
+  } catch (error) {
+    return {
+      message: "Your private key retrieval failed!",
+      success: false,
+      data: null,
+    };
+  }
+}
+export async function getUserData(props: { userId: string }) {
+  const { userId } = props;
+  try {
+    const { user, dbUser } = await _isUserKeyInitialized(userId);
+    const response: TGetUserDataResponse = {
+      message: "User data retrieved successfully!",
+      success: true,
+      data: {
+        email: user.username,
+        phone: dbUser?.phone,
+        address: user.publicKey,
+        imageSrc: dbUser?.image,
+      },
+    };
+    return response;
+  } catch (error) {
+    return {
+      message: "User data retrieval failed!",
+      success: false,
+      data: null,
+    };
+  }
+}
+export async function updateUserData(props: {
+  email: string;
+  phone: string;
+  userId: string;
+}) {
+  const { email, phone, userId } = props;
+  try {
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        email,
+        phone,
+      },
+    });
+
+    return {
+      message: "User data updated successfully!",
+      success: true,
+    };
+  } catch (error) {
+    return {
+      message: "User data update failed!",
       success: false,
     };
   }

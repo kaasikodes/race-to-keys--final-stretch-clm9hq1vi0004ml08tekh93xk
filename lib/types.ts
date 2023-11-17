@@ -75,8 +75,25 @@ export type TGetUserAccountsResponse = {
       address: string;
       user: User;
       isKeyInitialized: boolean;
-    })[];
+    } & { userId: string })[];
     total: number;
+  };
+};
+export type TGetUserDataResponse = {
+  message: string;
+  success: boolean;
+  data: Partial<{
+    email: string | null;
+    phone: string | null;
+    address: string | null;
+    imageSrc: string | null;
+  }>;
+};
+export type TAuthUserPrivateKeyResponse = {
+  message: string;
+  success: boolean;
+  data: {
+    privateKey: string;
   };
 };
 export type TKeySubjectDetailsResponse = {
@@ -138,4 +155,9 @@ export type TDBResponse = {
       data: (TOwnedCollection & { user?: User })[];
     };
   };
+};
+
+export type IModalProps = {
+  open: boolean;
+  onClose: () => void;
 };

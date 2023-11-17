@@ -56,6 +56,7 @@ export const config = {
     "/api/dashboard/:path*",
     "/api/keys/:path*",
     "/api/user/auth/:path*",
+    "/api/user/account/private-key/:path*",
     "/api/user/account/profile/:path*",
     "/api/user/account/transfer/:path*",
   ],

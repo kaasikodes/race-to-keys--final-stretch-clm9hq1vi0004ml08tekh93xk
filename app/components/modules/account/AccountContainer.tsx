@@ -17,6 +17,7 @@ const AccountContainer: React.FC<{
       <AccountsTable
         data={data?.data.map((item, i) => ({
           id: i + 1,
+          userId: item.userId,
           userName: item.user.username,
           key: item.address,
           iskeyOwner: item.isKeyInitialized,
